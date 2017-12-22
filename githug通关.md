@@ -1,4 +1,4 @@
-### dd
+### 通关Githug
 
 ---
 
@@ -20,8 +20,6 @@
 
 
 
----
-
 
 
 #### 二. 介绍
@@ -40,8 +38,6 @@ github地址: https://github.com/Gazler/githug
 花了一天时间去通关. 当中也有去翻译和查通关攻略. 
 
 
-
----
 
 
 
@@ -147,8 +143,6 @@ Githug只有四个游戏命令, 很简单:
 
 
 
----
-
 
 
 #### 四. 开始游戏
@@ -241,7 +235,7 @@ Congratulations, you have solved the level!
 
 
 
-##### Level 4: add
+##### Level 4: commit
 
 > The 'README' file has been added to your staging area, now commit it.
 >
@@ -286,7 +280,7 @@ Congratulations, you have solved the level!
 
 
 
-##### Level 6: clone
+##### Level 6: clone to folder
 
 > Clone the repository at <https://github.com/Gazler/cloneme> to 'my_cloned_repo'.
 >
@@ -334,6 +328,908 @@ Congratulations, you have solved the level!
 
 
 
-Level 7: ignore
+#####Level 8: include
+
+> Notice a few files with the '.a' extension. We want git to ignore all but the 'lib.a' file.
+>
+> 在忽略的里面排除掉不忽略的
+
+```shell
+[root@pipeline-cloud-test02 git_hug]# ls -a
+.  ..  first.a  .git  .gitignore  lib.a  .profile.yml  second.a
+[root@pipeline-cloud-test02 git_hug]# vim .gitignore
+[root@pipeline-cloud-test02 git_hug]# more .gitignore
+.profile.yml
+.gitignore
+*.a
+!lib.a  # 加"!"就是不忽略
+[root@pipeline-cloud-test02 git_hug]# githug
+********************************************************************************
+*                                    Githug                                    *
+********************************************************************************
+Congratulations, you have solved the level!
+```
+
+
+
+##### Level 9: status
+
+> There are some files in this repository, one of the files is untracked, which file is it?
+>
+> 也就是去找没有登记的文件, Untrakced File
+
+```shell
+[root@pipeline-cloud-test02 git_hug]# git status -s
+A  Guardfile
+A  README
+A  config.rb
+A  deploy.rb
+A  setup.rb
+?? database.yml
+[root@pipeline-cloud-test02 git_hug]# githug
+********************************************************************************
+*                                    Githug                                    *
+********************************************************************************
+What is the full file name of the untracked file? database.yml
+Congratulations, you have solved the level!
+```
+
+通过```git status```查看到的文件有这三种状态:
+
+* untracked: 未被登记的
+* modified: 修改过的
+* staged: 暂存区的
+
+
+
+##### Level 10: number_of_files_committed
+
+> There are some files in this repository, how many of the files will be committed?
+>
+> 找出有几个要被提交的文件, 什么状态的文件能被提交? 只有暂存区的了
+
+```shell
+[root@pipeline-cloud-test02 git_hug]# git status  -s
+A  rubyfile1.rb
+M  rubyfile4.rb
+ M rubyfile5.rb
+?? rubyfile6.rb
+?? rubyfile7.rb
+[root@pipeline-cloud-test02 git_hug]# githug
+********************************************************************************
+*                                    Githug                                    *
+********************************************************************************
+How many changes are going to be committed? 2
+Congratulations, you have solved the level!
+```
+
+**补充:**
+
+如果你用```git status```, 你会明显看到有两个文件处于Changes to be commited.
+
+如果加```-s```查看简要列表, 你需要明白前面的标志位是什么意思.
+
+首先第一个标志位:  是Staging area中的变化, 第二个标志位: 是Working directory中发生的更改. 
+
+标志位上的字母```A, M, D, ?```就不用说了
+
+
+
+##### Level 11: rm
+
+> A file has been removed from the working tree, however the file was not removed from the repository. Find out what this file was and remove it.
+>
+> 有个文件只在工作空间被删了, 然而没有从仓库里删掉.  找到它并删掉rm_cached
+
+```shell
+[root@pipeline-cloud-test02 git_hug]# git status -s
+ D deleteme.rb
+[root@pipeline-cloud-test02 git_hug]# git rm deleteme.rb
+rm 'deleteme.rb'
+[root@pipeline-cloud-test02 git_hug]# githug
+********************************************************************************
+*                                    Githug                                    *
+********************************************************************************
+Congratulations, you have solved the level!
+```
+
+在删除git文件时, 不要用```rm```的系统级别删除, 这样git会失去对这个文件的追踪. 而应该用```git rm```删除.
+
+
+
+##### Level 12: rm_cached
+
+> A file has accidentally been added to your staging area, find out which file and remove it from the staging area. *NOTE* Do not remove the file from the file system, only from git.
+>
+> 有个文件被错误的添加到暂存区, 找到他, 并从**暂存区**删除, 注意不是从文件系统删除.
+
+```shell
+[root@pipeline-cloud-test02 git_hug]# git status -s
+A  deleteme.rb
+[root@pipeline-cloud-test02 git_hug]# git rm --cached deleteme.rb
+rm 'deleteme.rb'
+[root@pipeline-cloud-test02 git_hug]# git status -s
+?? deleteme.rb
+[root@pipeline-cloud-test02 git_hug]# githug
+********************************************************************************
+*                                    Githug                                    *
+********************************************************************************
+Congratulations, you have solved the level!
+```
+
+
+
+##### Level 13: stash
+
+> You've made some changes and want to work on them later. You should save them, but don't commit them.
+>
+> 你已经在工作空间做了一些改动, 可能出现别的任务要你改动, 你需要保存之前的改动稍后处理, 但并不是提交.
+
+```shell
+[root@pipeline-cloud-test02 git_hug]# git status -s
+ M lyrics.txt
+[root@pipeline-cloud-test02 git_hug]# git stash
+Saved working directory and index state WIP on master: 0206059 Add some lyrics
+HEAD is now at 0206059 Add some lyrics
+[root@pipeline-cloud-test02 git_hug]# git status -s
+[root@pipeline-cloud-test02 git_hug]# githug
+********************************************************************************
+*                                    Githug                                    *
+********************************************************************************
+Congratulations, you have solved the level!
+```
+
+**补充:**
+
+储藏(Stashing): 经常有这样的事情发生，当你正在进行项目中某一部分的工作，里面的东西处于一个比较杂乱的状态，而你想转到其他分支上进行一些工作。问题是，你不想提交进行了一半的工作，否则以后你无法回到这个工作点。解决这个问题的办法就是`git stash`命令。
+
+"储藏"可以获取你工作目录的中间状态——也就是你修改过的被追踪的文件和暂存的变更——并将它保存到一个未完结变更的堆栈中，随时可以重新应用。
+
+使用储藏命令后, 它会帮你把工作环境回到	最后一次提交的状态, 也就是一个完全干净的工作环境. 
+
+```
+git stash list # 查看暂存工作区的列表
+git stash pop # 弹出这个现场
+```
+
+
+
+
+
+##### Level 14: rename
+
+> We have a file called 'oldfile.txt'. We want to rename it to 'newfile.txt' and stage this change.
+>
+> 将这个文件改名,  并希望在暂存区也生效.
+
+```shell
+[root@pipeline-cloud-test02 git_hug]# ls
+oldfile.txt
+[root@pipeline-cloud-test02 git_hug]# git mv oldfile.txt newfile.txt
+[root@pipeline-cloud-test02 git_hug]# githug
+********************************************************************************
+*                                    Githug                                    *
+********************************************************************************
+Congratulations, you have solved the level!
+```
+
+如同```git rm```一样, ```git mv```也会把改动的结果记录到暂存区.
+
+
+
+##### Level 15: restructure
+
+> You added some files to your repository, but now realize that your project needs to be restructured. Make a new folder named 'src' and using Git move all of the .html files into this folder.
+>
+> 你需要重构下仓库里的文件了, 新建一个src目录, 并把html文件放进去(用Git能够追踪的方式)
+
+```shell
+[root@pipeline-cloud-test02 git_hug]# mkdir src
+[root@pipeline-cloud-test02 git_hug]# git mv *.html /s
+sbin/ srv/  sys/
+[root@pipeline-cloud-test02 git_hug]# git mv *.html ./src/
+[root@pipeline-cloud-test02 git_hug]# ls src/
+about.html  contact.html  index.html
+[root@pipeline-cloud-test02 git_hug]# githug
+********************************************************************************
+*                                    Githug                                    *
+********************************************************************************
+Congratulations, you have solved the level!
+```
+
+
+
+##### Level 16: log
+
+> You will be asked for the hash of most recent commit. You will need to investigate the logs of the repository for this.
+>
+> 查下最近一次commit的哈希值
+
+```shell
+[root@pipeline-cloud-test02 git_hug]# git log --oneline
+7b8d2cd THIS IS THE COMMIT YOU ARE LOOKING FOR!
+[root@pipeline-cloud-test02 git_hug]# githug
+********************************************************************************
+*                                    Githug                                    *
+********************************************************************************
+What is the hash of the most recent commit? 7b8d2cd
+Congratulations, you have solved the level!
+```
+
+每个```git commit```都会留下一条日志. 
+
+
+
+##### Level 17: tag
+
+> We have a git repo and we want to tag the current commit with 'new_tag'.
+>
+> 给当前提交打一个新标签
+
+```
+[root@pipeline-cloud-test02 git_hug]# git tag new_tag
+[root@pipeline-cloud-test02 git_hug]# git tag
+new_tag
+[root@pipeline-cloud-test02 git_hug]# githug
+********************************************************************************
+*                                    Githug                                    *
+********************************************************************************
+Congratulations, you have solved the level!
+```
+
+```shell
+git tag xxx # 给最近一次提交打标签
+git tag xxx hashCodeXxx # 给某次提交打标签
+git tag # 列出所有标签
+git tag -d xxx # 删除某个标签
+```
+
+
+
+##### Level 18: push tags 
+
+> There are tags in the repository that aren't pushed into remote repository. Push them now.
+>
+> 推送本地仓库的标签到远程仓库
+
+```
+[root@pipeline-cloud-test02 git_hug]# git push --tags
+[root@pipeline-cloud-test02 git_hug]# githug
+********************************************************************************
+*                                    Githug                                    *
+********************************************************************************
+Congratulations, you have solved the level!
+```
+
+
+
+##### Level 19: commit_amend
+
+> The 'README' file has been committed, but it looks like the file 'forgotten_file.rb' was missing from the commit. Add the file and amend your previous commit to include it.
+>
+> README文件已经被提交, 但是另外一个文件忘记了, 添加这个文件到上一次提交中
+
+```
+[root@pipeline-cloud-test02 git_hug]# git status -s
+?? forgotten_file.rb
+[root@pipeline-cloud-test02 git_hug]# git add forgotten_file.rb
+[root@pipeline-cloud-test02 git_hug]# git commit --amend -C HEAD
+[master c90accd] Initial commit
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 README
+ create mode 100644 forgotten_file.rb
+[root@pipeline-cloud-test02 git_hug]# githug
+********************************************************************************
+*                                    Githug                                    *
+********************************************************************************
+Congratulations, you have solved the level!
+```
+
+一般是有文件漏提交了才会用```--amend```. 会把你漏的东西加到上一次提交里.
+
+```
+git commit --amend
+git commit --amend -m "xxx"  # 并用新的注释覆盖上一次的
+git commit --amend -C HEAD   # 还是用上一次的注释
+```
+
+
+
+##### Level 20: commit_in_future
+
+> Commit your changes with the future date (e.g. tomorrow).
+>
+> 提交时候改变下日期
+
+```
+[root@pipeline-cloud-test02 git_hug]# date
+Fri Dec 22 14:07:17 CST 2017
+[root@pipeline-cloud-test02 git_hug]# git commit --date="Fri Dec 22 14:07:17 CST 2018" -m "midify commit date"
+[master (root-commit) 83bca42] midify commit date
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 README
+[root@pipeline-cloud-test02 git_hug]# githug
+********************************************************************************
+*                                    Githug                                    *
+********************************************************************************
+Congratulations, you have solved the level!
+```
+
+没什么鸟用吧? 
+
+
+
+##### Level 21: reset
+
+> There are two files to be committed. The goal was to add each file as a separate commit, however both were added by accident. Unstage the file 'to_commit_second.rb' using the reset command (don't commit anything).
+>
+> 有两个文件要被提交, 但是你想分别提交, 把to_commit_second.rb从暂存区中拿出来
+
+```
+[root@pipeline-cloud-test02 git_hug]# git reset to_commit_second.rb
+[root@pipeline-cloud-test02 git_hug]# githug
+********************************************************************************
+*                                    Githug                                    *
+********************************************************************************
+Congratulations, you have solved the level!
+```
+
+这一关是让你从暂存区中取回文件到工作区, 目的是不想让这些文件被提交. 
+
+回忆第12关, 也是从暂存区中取. 所以你用```git rm --cached to_commit_second.rb```也能完成该任务. 
+
+区别在于, ```git rm```适合于取回新增的文件, ```git reset```适合取回修改的文件. 
+
+当然```git reset```还有更强的恢复功能, 后面会遇到.
+
+
+
+##### Level 22: reset_soft
+
+> You committed too soon. Now you want to undo the last commit, while keeping the index.
+>
+> 取消最后一次提交, 并保持暂存区不变
+
+```
+[root@pipeline-cloud-test02 git_hug]# git log --oneline
+02dd7f7 Premature commit
+40820f0 Initial commit
+[root@pipeline-cloud-test02 git_hug]# git reset --soft HEAD^
+[root@pipeline-cloud-test02 git_hug]# git log --oneline
+40820f0 Initial commit
+[root@pipeline-cloud-test02 git_hug]# githug
+********************************************************************************
+*                                    Githug                                    *
+********************************************************************************
+Congratulations, you have solved the level!
+```
+
+在```git reset```命令中, ```--soft HEAD^```就表示撤销的事最近一次提交. 并且暂存区不受影响.
+
+回忆下19关, 是将某个遗漏的文件添加到上一次提交中去. 用的是```git commit --amend -C HEAD```
+
+那它就等同于先执行```git reset --soft HEAD^```再执行```git commit```的合体. 
+
+
+
+##### Level 23: checkout_file
+
+> A file has been modified, but you don't want to keep the modification. Checkout the 'config.rb' file from the last commit.
+>
+> 一个文件已经被修改了, 但你并不想保留这份修改. 把文件撤销到最后一次提交的状态.
+
+```
+[root@pipeline-cloud-test02 git_hug]# git status -s
+ M config.rb
+[root@pipeline-cloud-test02 git_hug]# git checkout config.rb
+[root@pipeline-cloud-test02 git_hug]# git status -s
+[root@pipeline-cloud-test02 git_hug]# githug
+********************************************************************************
+*                                    Githug                                    *
+********************************************************************************
+Congratulations, you have solved the level!
+```
+
+
+
+##### Level 24: remote
+
+> This project has a remote repository. Identify it.
+>
+> 找到这个项目的远程仓库名
+
+```
+[root@pipeline-cloud-test02 git_hug]# git remote
+my_remote_repo
+[root@pipeline-cloud-test02 git_hug]# githug
+********************************************************************************
+*                                    Githug                                    *
+********************************************************************************
+What is the name of the remote repository? my_remote_repo
+Congratulations, you have solved the level!
+```
+
+
+
+##### Level 25: remote_url
+
+> The remote repositories have a url associated to them. Please enter the url of remote_location.
+>
+> 找到这个项目的远程仓库的URL
+
+```
+[root@pipeline-cloud-test02 git_hug]# git remote -v
+my_remote_repo  https://github.com/Gazler/githug (fetch)
+my_remote_repo  https://github.com/Gazler/githug (push)
+remote_location https://github.com/githug/not_a_repo (fetch)
+remote_location https://github.com/githug/not_a_repo (push)
+[root@pipeline-cloud-test02 git_hug]# githug
+********************************************************************************
+*                                    Githug                                    *
+********************************************************************************
+What is the url of the remote repository? remote_location https://github.com/githug/not_a_repo
+Congratulations, you have solved the level!
+```
+
+
+
+##### Level 26: pull
+
+> You need to pull changes from your origin repository.
+>
+> 从远程仓库origin拉取更新
+
+```
+[root@pipeline-cloud-test02 git_hug]# git pull origin master
+remote: Counting objects: 3, done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 3
+Unpacking objects: 100% (3/3), done.
+From https://github.com/pull-this/thing-to-pull
+ * branch            master     -> FETCH_HEAD
+[root@pipeline-cloud-test02 git_hug]# githug
+********************************************************************************
+*                                    Githug                                    *
+********************************************************************************
+Congratulations, you have solved the level!
+```
+
+
+
+##### Level 27: remote_add
+
+> Add a remote repository called 'origin' with the url <https://github.com/githug/githug>
+>
+> 添加一个远程仓库, 仓库名origin, 地址https://github.com/githug/githug
+
+```
+[root@pipeline-cloud-test02 git_hug]# git remote
+[root@pipeline-cloud-test02 git_hug]# git remote -v
+[root@pipeline-cloud-test02 git_hug]# git remote add origin https://github.com/githug/githug
+[root@pipeline-cloud-test02 git_hug]# git remote -v
+origin  https://github.com/githug/githug (fetch)
+origin  https://github.com/githug/githug (push)
+[root@pipeline-cloud-test02 git_hug]# git remote
+origin
+[root@pipeline-cloud-test02 git_hug]# githug
+********************************************************************************
+*                                    Githug                                    *
+********************************************************************************
+Congratulations, you have solved the level!
+```
+
+clone的项目git会自动保存地址, 以上这种方式适合于手工添加远程仓库
+
+
+
+##### Level 28: push
+
+> Your local master branch has diverged from the remote origin/master branch. Rebase your commit onto origin/master and push it to remote.
+>
+> 你本地的master分支是从远程仓库(origin/master)上创建的, rebase你的提交到远程仓库(origin/master).
+
+```shell
+[root@pipeline-cloud-test02 git_hug]# git log --oneline
+fd962e8 Third commit
+98f106a Second commit
+3186c7d First commit
+[root@pipeline-cloud-test02 git_hug]# git log origin/master --oneline
+6c41ca7 Fourth commit
+[root@pipeline-cloud-test02 git_hug]# git rebase
+First, rewinding head to replay your work on top of it...
+Applying: First commit
+Applying: Second commit
+Applying: Third commit
+[root@pipeline-cloud-test02 git_hug]# git push origin master
+Counting objects: 7, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (6/6), 591 bytes | 0 bytes/s, done.
+Total 6 (delta 2), reused 0 (delta 0)
+To /tmp/d20171222-60085-1tu401p/.git
+   6c41ca7..1154eda  master -> master
+[root@pipeline-cloud-test02 git_hug]# git log origin/master --oneline
+1154eda Third commit
+f2580d0 Second commit
+944547b First commit
+6c41ca7 Fourth commit
+```
+
+**补充:**
+
+关于推送到远程:
+
+```
+# 推送到远程
+git push remote-name branch-name
+git push -u remote-name branch-name # 推送的同时记住仓库名和分支
+git push # 记住后这样推送
+```
+
+在多人协作的项目中, 大家都需要推送自己的更改到远程仓库. 
+
+但是推送也是有时间顺序的. 如果在你推送之前有人已经推送了, 那么你会收到```"non-fast forward" ```的提示. 
+
+所以需要先获取远程的最新代码到本地, 有如下两种方式:
+
+1. ```git pull```: 把远程仓库的最新代码合并到本地，然后再提交。这时本地的提交和远程的提交**按时间顺序混合排列**。
+2. ```git rebase```: 把本地仓库的更新排到远程仓库更新之后，那这时候本地仓库的所有提交都排在远程仓库的最后一次提交之后。rebase翻译过来叫变基, 后面还会有关于它的应用.
+
+
+
+##### Level 29: diff
+
+> There have been modifications to the 'app.rb' file since your last commit. Find out whick line has changed.
+>
+> 最后一次提交之后你又修改了app.rb文件, 找到哪行被修改了
+
+```
+[root@pipeline-cloud-test02 git_hug]# git diff app.rb
+diff --git a/app.rb b/app.rb
+index 4f703ca..3bfa839 100644
+--- a/app.rb
++++ b/app.rb
+@@ -23,7 +23,7 @@ get '/yet_another' do
+   erb :success
+ end
+ get '/another_page' do
+-  @message = get_response('data.json')
++  @message = get_response('server.json')
+   erb :another
+ end
+
+[root@pipeline-cloud-test02 git_hug]# vim app.rb
+[root@pipeline-cloud-test02 git_hug]# githug
+********************************************************************************
+*                                    Githug                                    *
+********************************************************************************
+What is the number of the line which has changed? 26
+Congratulations, you have solved the level!
+```
+
+**补充:**
+
+```git diff``` 是查看第二个flag(也就是Staging area和Working directory) 具体变化信息的命令
+
+被修改后的文件是modified状态: 
+
+```
+git diff –staged # 可以查看第一个flag(也就是Staging arae和History 之间的变化), 产生相同的效果
+git diff HEAD # 可以看History 和 Working 之间的变化
+git diff –stat # 后面加stat可以简化变化信息
+```
+
+
+
+##### Level 30: blame
+
+> Someone has put a password inside the file 'config.rb' find out who it was.
+>
+> 有人在config.rb文件里放了个password, 找出来谁搞的? 
+
+```
+[root@pipeline-cloud-test02 git_hug]# git blame config.rb
+^5e8863d (Gary Rennie       2012-03-08 23:05:24 +0000  1) class Config
+70d00535 (Bruce Banner      2012-03-08 23:07:41 +0000  2)   attr_accessor :name, :password
+97bdd0cc (Spider Man        2012-03-08 23:08:15 +0000  3)   def initialize(name, password = nil, options = {})
+^5e8863d (Gary Rennie       2012-03-08 23:05:24 +0000  4)     @name = name
+97bdd0cc (Spider Man        2012-03-08 23:08:15 +0000  5)     @password = password || "i<3evil"
+00000000 (Not Committed Yet 2017-12-22 16:23:59 +0800  6)
+09409480 (Spider Man        2012-03-08 23:06:18 +0000  7)     if options[:downcase]
+09409480 (Spider Man        2012-03-08 23:06:18 +0000  8)       @name.downcase!
+09409480 (Spider Man        2012-03-08 23:06:18 +0000  9)     end
+70d00535 (Bruce Banner      2012-03-08 23:07:41 +0000 10)
+ffd39c2d (Gary Rennie       2012-03-08 23:08:58 +0000 11)     if options[:upcase]
+ffd39c2d (Gary Rennie       2012-03-08 23:08:58 +0000 12)       @name.upcase!
+ffd39c2d (Gary Rennie       2012-03-08 23:08:58 +0000 13)     end
+ffd39c2d (Gary Rennie       2012-03-08 23:08:58 +0000 14)
+^5e8863d (Gary Rennie       2012-03-08 23:05:24 +0000 15)   end
+^5e8863d (Gary Rennie       2012-03-08 23:05:24 +0000 16) end
+[root@pipeline-cloud-test02 git_hug]# githug
+********************************************************************************
+*                                    Githug                                    *
+********************************************************************************
+Who made the commit with the password? Spider Man
+Congratulations, you have solved the level!
+```
+
+这个命令会详细列出该文件每行代码提交的哈希值, 提交的人和日期
+
+
+
+##### Level 31: branch
+
+> You want to work on a piece of code that has the potential to break things, create the branch test_code.
+>
+> 你想实验一些代码, 但害怕有问题. 创建一个新分支test_code
+
+```
+[root@pipeline-cloud-test02 git_hug]# git branch test_code
+[root@pipeline-cloud-test02 git_hug]# git branch
+* master
+  test_code
+[root@pipeline-cloud-test02 git_hug]# githug
+********************************************************************************
+*                                    Githug                                    *
+********************************************************************************
+Congratulations, you have solved the level!
+```
+
+```
+git branch xxx # 创建一个分支
+git branch # 列出所有分支
+```
+
+
+
+##### Level 32: checkout
+
+>Create and switch to a new branch called my_branch. You will need to create a branch like you did in the previous level.
+>
+>创建一个新分支my_branch并切换到这个新分支
+
+```
+[root@pipeline-cloud-test02 git_hug]# git branch my_branch
+[root@pipeline-cloud-test02 git_hug]# git checkout my_branch
+Switched to branch 'my_branch'
+[root@pipeline-cloud-test02 git_hug]# git branch
+  master
+* my_branch
+[root@pipeline-cloud-test02 git_hug]# githug
+********************************************************************************
+*                                    Githug                                    *
+********************************************************************************
+Congratulations, you have solved the level!
+```
+
+**补充:**
+
+```
+git checkout xxxBranch  # 检出一个分支
+git checkout xxxFile  # 之前讲过如何撤销进入暂存区的修改, 这个也可以
+git checkout -b xxx  # == git branch xxx + git checkout xxx
+git checkout - # 用于在最近的两个分支之间切换
+```
+
+
+
+##### Level 33: checkout_tag
+
+> You need to fix a bug in the version 1.2 of your app. Checkout the tag `v1.2`.
+>
+> 你需要切换到```tag v1.2```上去修复一些Bug
+
+```
+[root@pipeline-cloud-test02 git_hug]# git branch
+* master
+[root@pipeline-cloud-test02 git_hug]# git tag
+v1.0
+v1.2
+v1.5
+[root@pipeline-cloud-test02 git_hug]# git checkout v1.2
+Note: checking out 'v1.2'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -b with the checkout command again. Example:
+
+  git checkout -b new_branch_name
+
+HEAD is now at 060320d... Some more changes
+[root@pipeline-cloud-test02 git_hug]# git branch
+* (detached from v1.2)
+  master
+[root@pipeline-cloud-test02 git_hug]# githug
+********************************************************************************
+*                                    Githug                                    *
+********************************************************************************
+Congratulations, you have solved the level!
+```
+
+**注意:** 从前面已经看到```git checkout```后面可以跟分之, 标签, 文件. 但是作用不通.
+
+
+
+##### Level 34: checkout_tag_over_branch
+
+> You need to fix a bug in the version 1.2 of your app. Checkout the tag `v1.2` (Note: There is also a branch named `v1.2`).
+>
+> 切换到```tag v1.2```上去修复一个bug(注意有一个分支也叫v1.2)
+
+```
+[root@pipeline-cloud-test02 git_hug]# git checkout tags/v1.2
+Note: checking out 'tags/v1.2'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -b with the checkout command again. Example:
+
+  git checkout -b new_branch_name
+
+HEAD is now at fc5edda... Some more changes
+[root@pipeline-cloud-test02 git_hug]# githug
+********************************************************************************
+*                                    Githug                                    *
+********************************************************************************
+Congratulations, you have solved the level!
+```
+
+这样区分就好了.
+
+
+
+##### Level 35: branch_at
+
+> You forgot to branch at the previous commit and made a commit on top of it. Create branch test_branch at the commit before the last.
+>
+> 你忘记在上次提交之前先创建一个分支, 那么创建一个test_branch在上次提交之前
+
+```
+[root@pipeline-cloud-test02 git_hug]# git log --oneline
+03a7f2c Updating file1 again
+3bcda78 Updating file1
+3873d24 Adding file1
+[root@pipeline-cloud-test02 git_hug]# git branch test_branch 3bcda78
+[root@pipeline-cloud-test02 git_hug]# githug
+********************************************************************************
+*                                    Githug                                    *
+********************************************************************************
+Congratulations, you have solved the level!
+```
+
+
+
+##### Level 36: delete_branch
+
+> You have created too many branches for your project. There is an old branch in your repo called 'delete_me', you should delete it.
+>
+> 删掉```delete_me```分支
+
+```
+[root@pipeline-cloud-test02 git_hug]# git branch
+  delete_me
+* master
+[root@pipeline-cloud-test02 git_hug]# git branch -d delete_me
+Deleted branch delete_me (was b60afe2).
+[root@pipeline-cloud-test02 git_hug]# githug
+********************************************************************************
+*                                    Githug                                    *
+********************************************************************************
+Congratulations, you have solved the level!
+```
+
+
+
+##### Level 37: push_branch
+
+> You've made some changes to a local branch and want to share it, but aren't yet ready to merge it with the 'master' branch. Push only 'test_branch' to the remote repository.
+>
+> 你本地分支做了些修改想分享它, 但是不准备合并到master上. 所以把他推送到test_branch分支远程仓库上.
+
+```
+[root@pipeline-cloud-test02 git_hug]# git remote
+origin
+[root@pipeline-cloud-test02 git_hug]# git branch
+* master
+  other_branch
+  test_branch
+[root@pipeline-cloud-test02 git_hug]# git push origin test_branch
+Counting objects: 7, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (6/6), 572 bytes | 0 bytes/s, done.
+Total 6 (delta 3), reused 0 (delta 0)
+To /tmp/d20171222-302-aokpd0/.git
+ * [new branch]      test_branch -> test_branch
+[root@pipeline-cloud-test02 git_hug]# githug
+********************************************************************************
+*                                    Githug                                    *
+********************************************************************************
+Congratulations, you have solved the level!
+```
+
+
+
+##### Level 38: merge
+
+> We have a file in the branch 'feature'; Let's merge it to the master branch.
+>
+> feature分支上有个文件, 把它合并到master上
+
+```
+[root@pipeline-cloud-test02 git_hug]# git log master --oneline
+e12277f added file1
+[root@pipeline-cloud-test02 git_hug]# git log feature --oneline
+cc8ea5a added file2
+e12277f added file1
+[root@pipeline-cloud-test02 git_hug]# git branch
+  feature
+* master
+[root@pipeline-cloud-test02 git_hug]# git merge feature
+Updating e12277f..cc8ea5a
+Fast-forward
+ file2 | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 file2
+[root@pipeline-cloud-test02 git_hug]# git log master --oneline
+cc8ea5a added file2
+e12277f added file1
+[root@pipeline-cloud-test02 git_hug]# githug
+********************************************************************************
+*                                    Githug                                    *
+********************************************************************************
+Congratulations, you have solved the level!
+```
+
+分支测试完成后就可以合并到主干, 主干上也会记录对应的日志. 
+
+
+
+##### Level 39: fetch
+
+> Looks like a new branch was pushed into our remote repository. Get the changes without merging them with the local repository
+>
+> 有一个新的分支推送到远程仓库了, 得到它但是不要合并到你的本地仓库
+
+```
+[root@pipeline-cloud-test02 git_hug]# git branch
+* master
+[root@pipeline-cloud-test02 git_hug]# git branch -r
+  origin/master
+[root@pipeline-cloud-test02 git_hug]# git fetch
+remote: Counting objects: 3, done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 2 (delta 0), reused 0 (delta 0)
+Unpacking objects: 100% (2/2), done.
+From /tmp/d20171222-797-1165a5c/
+ * [new branch]      new_branch -> origin/new_branch
+[root@pipeline-cloud-test02 git_hug]# git branch
+* master
+[root@pipeline-cloud-test02 git_hug]# git branch -r
+  origin/master
+  origin/new_branch
+[root@pipeline-cloud-test02 git_hug]# githug
+********************************************************************************
+*                                    Githug                                    *
+********************************************************************************
+Congratulations, you have solved the level!
+```
+
+为什么不用```git pull```呢, 因为它不仅会拉取远程代码, 还会合并到本地代码, 相当于```git fetch```+```git merge```
+
+在 `git fetch` 之后用 `git branch -r` 查看时会发现新分支的名称
+
+
+
+##### Level 40: rebase
+
+> We are using a git rebase workflow and the feature branch is ready to go into master. Let's rebase the feature branch onto our master branch.
+>
+> 
 
 41关rebase -onto参考: http://blog.csdn.net/huitailang1991/article/details/54289701
