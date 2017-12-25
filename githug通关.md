@@ -1,10 +1,10 @@
-### 通关Githug
+## 通关Githug
 
 ---
 
 
 
-####一. 前言
+### 一. 前言
 
 > 第一眼看到githug, 以为是把github拼错. 
 >
@@ -22,7 +22,7 @@
 
 
 
-#### 二. 介绍
+### 二. 介绍
 
 当然, githug不是什么RPG, FPS之类的游戏. 
 
@@ -39,9 +39,9 @@ github地址: https://github.com/Gazler/githug
 
 
 
-#### 三. 安装使用
+### 三. 安装使用
 
-##### 1. 安装
+#### 1. 安装
 Githug可以使用在Linux, Windows, OS X下. 
 
 我以 CentOS 7 为例: 
@@ -56,7 +56,7 @@ Githug可以使用在Linux, Windows, OS X下.
 
 安装完成. 
 
-##### 2. 使用
+#### 2. 使用
 
 Githug只有四个游戏命令, 很简单: 
 
@@ -76,7 +76,7 @@ Githug只有四个游戏命令, 很简单:
 
 然后会出现一个git_hug目录, 以后所有关卡都会在该目录下生成文件和git对象. 每完成一关都会重新初始化游戏场景.
 
-##### 3. 关卡列表
+#### 3. 关卡列表
 
 为了方便查看, 所以列出所有关卡. 这里摘抄一个wiki. 
 
@@ -143,11 +143,11 @@ Githug只有四个游戏命令, 很简单:
 
 
 
-#### 四. 开始游戏
+### 四. 开始游戏
 
 
 
-##### Level 1: init
+#### Level 1: init
 
 > A new directory, `git_hug`, has been created; initialize an empty repository in it.
 >
@@ -166,7 +166,7 @@ Congratulations, you have solved the level!
 
 
 
-##### Level 2: config
+#### Level 2: config
 
 > Set up your git name and email, this is important so that your commits can be identified.
 >
@@ -201,7 +201,7 @@ git config –list # 查看git全局配置
 
 
 
-##### Level 3: add
+#### Level 3: add
 
 > There is a file in your folder called 'README', you should add it to your staging area.
 >
@@ -233,7 +233,7 @@ Congratulations, you have solved the level!
 
 
 
-##### Level 4: commit
+#### Level 4: commit
 
 > The 'README' file has been added to your staging area, now commit it.
 >
@@ -256,7 +256,7 @@ Congratulations, you have solved the level!
 
 
 
-##### Level 5: clone
+#### Level 5: clone
 
 > Clone the repository at <https://github.com/Gazler/cloneme>.
 
@@ -278,7 +278,7 @@ Congratulations, you have solved the level!
 
 
 
-##### Level 6: clone to folder
+#### Level 6: clone to folder
 
 > Clone the repository at <https://github.com/Gazler/cloneme> to 'my_cloned_repo'.
 >
@@ -300,7 +300,7 @@ Congratulations, you have solved the level!
 
 
 
-##### Level 7: ignore
+#### Level 7: ignore
 
 > The text editor 'vim' creates files ending in '.swp' (swap files) for all files that are currently open. We don't want them creeping into the repository. Make this repository ignore '.swp' files.
 >
@@ -326,7 +326,7 @@ Congratulations, you have solved the level!
 
 
 
-#####Level 8: include
+#### Level 8: include
 
 > Notice a few files with the '.a' extension. We want git to ignore all but the 'lib.a' file.
 >
@@ -350,7 +350,7 @@ Congratulations, you have solved the level!
 
 
 
-##### Level 9: status
+#### Level 9: status
 
 > There are some files in this repository, one of the files is untracked, which file is it?
 >
@@ -380,7 +380,7 @@ Congratulations, you have solved the level!
 
 
 
-##### Level 10: number_of_files_committed
+#### Level 10: number_of_files_committed
 
 > There are some files in this repository, how many of the files will be committed?
 >
@@ -413,7 +413,7 @@ Congratulations, you have solved the level!
 
 
 
-##### Level 11: rm
+#### Level 11: rm
 
 > A file has been removed from the working tree, however the file was not removed from the repository. Find out what this file was and remove it.
 >
@@ -435,7 +435,7 @@ Congratulations, you have solved the level!
 
 
 
-##### Level 12: rm_cached
+#### Level 12: rm_cached
 
 > A file has accidentally been added to your staging area, find out which file and remove it from the staging area. *NOTE* Do not remove the file from the file system, only from git.
 >
@@ -457,7 +457,7 @@ Congratulations, you have solved the level!
 
 
 
-##### Level 13: stash
+#### Level 13: stash
 
 > You've made some changes and want to work on them later. You should save them, but don't commit them.
 >
@@ -494,7 +494,7 @@ git stash pop # 弹出这个现场
 
 
 
-##### Level 14: rename
+#### Level 14: rename
 
 > We have a file called 'oldfile.txt'. We want to rename it to 'newfile.txt' and stage this change.
 >
@@ -515,7 +515,7 @@ Congratulations, you have solved the level!
 
 
 
-##### Level 15: restructure
+#### Level 15: restructure
 
 > You added some files to your repository, but now realize that your project needs to be restructured. Make a new folder named 'src' and using Git move all of the .html files into this folder.
 >
@@ -537,7 +537,7 @@ Congratulations, you have solved the level!
 
 
 
-##### Level 16: log
+#### Level 16: log
 
 > You will be asked for the hash of most recent commit. You will need to investigate the logs of the repository for this.
 >
@@ -558,7 +558,7 @@ Congratulations, you have solved the level!
 
 
 
-##### Level 17: tag
+#### Level 17: tag
 
 > We have a git repo and we want to tag the current commit with 'new_tag'.
 >
@@ -584,7 +584,7 @@ git tag -d xxx # 删除某个标签
 
 
 
-##### Level 18: push tags 
+#### Level 18: push tags 
 
 > There are tags in the repository that aren't pushed into remote repository. Push them now.
 >
@@ -601,7 +601,7 @@ Congratulations, you have solved the level!
 
 
 
-##### Level 19: commit_amend
+#### Level 19: commit_amend
 
 > The 'README' file has been committed, but it looks like the file 'forgotten_file.rb' was missing from the commit. Add the file and amend your previous commit to include it.
 >
@@ -633,7 +633,7 @@ git commit --amend -C HEAD   # 还是用上一次的注释
 
 
 
-##### Level 20: commit_in_future
+#### Level 20: commit_in_future
 
 > Commit your changes with the future date (e.g. tomorrow).
 >
@@ -657,7 +657,7 @@ Congratulations, you have solved the level!
 
 
 
-##### Level 21: reset
+#### Level 21: reset
 
 > There are two files to be committed. The goal was to add each file as a separate commit, however both were added by accident. Unstage the file 'to_commit_second.rb' using the reset command (don't commit anything).
 >
@@ -682,7 +682,7 @@ Congratulations, you have solved the level!
 
 
 
-##### Level 22: reset_soft
+#### Level 22: reset_soft
 
 > You committed too soon. Now you want to undo the last commit, while keeping the index.
 >
@@ -710,7 +710,7 @@ Congratulations, you have solved the level!
 
 
 
-##### Level 23: checkout_file
+#### Level 23: checkout_file
 
 > A file has been modified, but you don't want to keep the modification. Checkout the 'config.rb' file from the last commit.
 >
@@ -730,7 +730,7 @@ Congratulations, you have solved the level!
 
 
 
-##### Level 24: remote
+#### Level 24: remote
 
 > This project has a remote repository. Identify it.
 >
@@ -749,7 +749,7 @@ Congratulations, you have solved the level!
 
 
 
-##### Level 25: remote_url
+#### Level 25: remote_url
 
 > The remote repositories have a url associated to them. Please enter the url of remote_location.
 >
@@ -771,7 +771,7 @@ Congratulations, you have solved the level!
 
 
 
-##### Level 26: pull
+#### Level 26: pull
 
 > You need to pull changes from your origin repository.
 >
@@ -793,7 +793,7 @@ Congratulations, you have solved the level!
 
 
 
-##### Level 27: remote_add
+#### Level 27: remote_add
 
 > Add a remote repository called 'origin' with the url <https://github.com/githug/githug>
 >
@@ -819,7 +819,7 @@ clone的项目git会自动保存地址, 以上这种方式适合于手工添加�
 
 
 
-##### Level 28: push
+#### Level 28: push
 
 > Your local master branch has diverged from the remote origin/master branch. Rebase your commit onto origin/master and push it to remote.
 >
@@ -877,7 +877,7 @@ git push # 记住后这样推送
 
 
 
-##### Level 29: diff
+#### Level 29: diff
 
 > There have been modifications to the 'app.rb' file since your last commit. Find out whick line has changed.
 >
@@ -921,7 +921,7 @@ git diff –stat # 后面加stat可以简化变化信息
 
 
 
-##### Level 30: blame
+#### Level 30: blame
 
 > Someone has put a password inside the file 'config.rb' find out who it was.
 >
@@ -957,7 +957,7 @@ Congratulations, you have solved the level!
 
 
 
-##### Level 31: branch
+#### Level 31: branch
 
 > You want to work on a piece of code that has the potential to break things, create the branch test_code.
 >
@@ -982,7 +982,7 @@ git branch # 列出所有分支
 
 
 
-##### Level 32: checkout
+#### Level 32: checkout
 
 >Create and switch to a new branch called my_branch. You will need to create a branch like you did in the previous level.
 >
@@ -1013,7 +1013,7 @@ git checkout - # 用于在最近的两个分支之间切换
 
 
 
-##### Level 33: checkout_tag
+#### Level 33: checkout_tag
 
 > You need to fix a bug in the version 1.2 of your app. Checkout the tag `v1.2`.
 >
@@ -1053,7 +1053,7 @@ Congratulations, you have solved the level!
 
 
 
-##### Level 34: checkout_tag_over_branch
+#### Level 34: checkout_tag_over_branch
 
 > You need to fix a bug in the version 1.2 of your app. Checkout the tag `v1.2` (Note: There is also a branch named `v1.2`).
 >
@@ -1084,7 +1084,7 @@ Congratulations, you have solved the level!
 
 
 
-##### Level 35: branch_at
+#### Level 35: branch_at
 
 > You forgot to branch at the previous commit and made a commit on top of it. Create branch test_branch at the commit before the last.
 >
@@ -1105,7 +1105,7 @@ Congratulations, you have solved the level!
 
 
 
-##### Level 36: delete_branch
+#### Level 36: delete_branch
 
 > You have created too many branches for your project. There is an old branch in your repo called 'delete_me', you should delete it.
 >
@@ -1126,7 +1126,7 @@ Congratulations, you have solved the level!
 
 
 
-##### Level 37: push_branch
+#### Level 37: push_branch
 
 > You've made some changes to a local branch and want to share it, but aren't yet ready to merge it with the 'master' branch. Push only 'test_branch' to the remote repository.
 >
@@ -1156,7 +1156,7 @@ Congratulations, you have solved the level!
 
 
 
-##### Level 38: merge
+#### Level 38: merge
 
 > We have a file in the branch 'feature'; Let's merge it to the master branch.
 >
@@ -1191,7 +1191,7 @@ Congratulations, you have solved the level!
 
 
 
-##### Level 39: fetch
+#### Level 39: fetch
 
 > Looks like a new branch was pushed into our remote repository. Get the changes without merging them with the local repository
 >
@@ -1227,7 +1227,7 @@ Congratulations, you have solved the level!
 
 
 
-##### Level 40: rebase
+#### Level 40: rebase
 
 > We are using a git rebase workflow and the feature branch is ready to go into master. Let's rebase the feature branch onto our master branch.
 >
@@ -1266,7 +1266,7 @@ Congratulations, you have solved the level!
 
 
 
-##### Level 41: rebase_onto
+#### Level 41: rebase_onto
 
 > You have created your branch from `wrong_branch` and already made some commits, and you realise that you needed to create your branch from `master`. Rebase your commits onto `master` branch so that you don't have `wrong_branch` commits.
 >
@@ -1340,7 +1340,7 @@ o---o---o---o---o  master
 
 
 
-##### Level 42: repack
+#### Level 42: repack
 
 > Optimise how your repository is packaged ensuring that redundant packs are removed.
 >
@@ -1366,7 +1366,7 @@ Congratulations, you have solved the level!
 
 
 
-##### Level 43: cherry-pick
+#### Level 43: cherry-pick
 
 > Your new feature isn't worth the time and you're going to delete it. But it has one commit that fills in `README` file, and you want this commit to be on the master as well.
 >
@@ -1412,7 +1412,7 @@ Congratulations, you have solved the level!
 
 
 
-##### Level 44: grep
+#### Level 44: grep
 
 > Your project's deadline approaches, you should evaluate how many TODOs are left in your code.
 >
@@ -1440,7 +1440,7 @@ git grep xxx file-name # 指定文件查找
 
 
 
-##### Level 45: rename_commit
+#### Level 45: rename_commit
 
 > Correct the typo in the message of your first (non-root) commit.
 >
@@ -1491,7 +1491,7 @@ Congratulations, you have solved the level!
 
 
 
-##### Level 46: squash
+#### Level 46: squash
 
 > You have committed several times but would like all those changes to be one commit.
 >
@@ -1523,7 +1523,7 @@ Congratulations, you have solved the level!
 
 
 
-##### Level 47: merge_squash
+#### Level 47: merge_squash
 
 > Merge all commits from the long-feature-branch as a single commit.
 >
@@ -1567,7 +1567,7 @@ Congratulations, you have solved the level!
 
 
 
-##### Level 48: reorder
+#### Level 48: reorder
 
 > You have committed several times but in the wrong order. Please reorder your commits.
 >
@@ -1595,7 +1595,7 @@ Congratulations, you have solved the level!
 
 
 
-##### Level 49: bisect
+#### Level 49: bisect
 
 > A bug was introduced somewhere along the way. You know that running "ruby prog.rb 5" should output 15. You can also run "make test". What are the first 7 chars of the hash of the commit that introduced the bug.
 >
@@ -1667,7 +1667,7 @@ Congratulations, you have solved the level!
 
 
 
-##### Level 50: stage_lines
+#### Level 50: stage_lines
 
 > You've made changes within a single file that belong to two different features, but neither of the changes are yet staged. Stage only the changes belonging to the first feature.
 >
@@ -1708,7 +1708,7 @@ Congratulations, you have solved the level!
 
 
 
-##### Level 51: find_old_branch
+#### Level 51: find_old_branch
 
 > You have been working on a branch but got distracted by a major issue and forgot the name of it. Switch back to that branch.
 >
@@ -1736,7 +1736,7 @@ Congratulations, you have solved the level!
 
 
 
-##### Level 52: revert
+#### Level 52: revert
 
 > You have committed several times but want to undo the middle commit. All commits have been pushed, so you can't change existing history.
 >
@@ -1772,7 +1772,7 @@ git revert hash-code --no-edit # 自动生成注释
 
 
 
-##### Level 53: restore
+#### Level 53: restore
 
 > You decided to delete your latest commit by running `git reset --hard HEAD^`. (Not a smart thing to do.) You then change your mind, and want that commit back. Restore the deleted commit.
 >
@@ -1802,7 +1802,7 @@ Congratulations, you have solved the level!
 
 
 
-##### Level 54: conflict
+#### Level 54: conflict
 
 > You need to merge mybranch into the current branch (master). But there may be some incorrect changes in mybranch which may cause conflicts. Solve any merge-conflicts you come across and finish the merge.
 >
@@ -1837,7 +1837,7 @@ Congratulations, you have solved the level!
 
 
 
-##### Level 55: submodule
+#### Level 55: submodule
 
 > You want to include the files from the following repo: `https://github.com/jackmaney/githug-include-me` into a the folder `./githug-include-me`. Do this without cloning the repo or copying the files from the repo into this repo.
 >
@@ -1858,7 +1858,7 @@ Congratulations, you have solved the level!
 
 
 
-##### Level 56: contribute
+#### Level 56: contribute
 
 > This is the final level, the goal is to contribute to this repository by making a pull request on GitHub. Please note that this level is designed to encourage you to add a valid contribution to Githug, not testing your ability to create a pull request. Contributions that are likely to be accepted are levels, bug fixes and improved documentation.
 
