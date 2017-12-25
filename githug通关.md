@@ -6,7 +6,7 @@
 
 ####一. 前言
 
-> 以前第一眼看到githug, 以为是把github拼错. 
+> 第一眼看到githug, 以为是把github拼错. 
 >
 > 见过了git, github, github pages, git workflow. 一定好奇githug是什么. 
 >
@@ -39,12 +39,10 @@ github地址: https://github.com/Gazler/githug
 
 
 
-
-
 #### 三. 安装使用
 
 ##### 1. 安装
-首先, Githug可以使用在Linux, Windows, OS X下. 
+Githug可以使用在Linux, Windows, OS X下. 
 
 我以 CentOS 7 为例: 
 
@@ -80,7 +78,7 @@ Githug只有四个游戏命令, 很简单:
 
 ##### 3. 关卡列表
 
-为了方便查看, 所以列出所有关卡. 这里摘抄一个极客学院的wiki. 
+为了方便查看, 所以列出所有关卡. 这里摘抄一个wiki. 
 
 |                                          |                          |                    |
 | ---------------------------------------- | :----------------------- | ------------------ |
@@ -174,7 +172,7 @@ Congratulations, you have solved the level!
 >
 > 配置用户名和邮箱是为了提交代码时的团队标识
 
-```
+```shell
 [root@pipeline-cloud-test02 git_hug]# git config --add user.name thank
 [root@pipeline-cloud-test02 git_hug]# git config --add user.email coderthank@163.com
 [root@pipeline-cloud-test02 git_hug]# githug
@@ -286,7 +284,7 @@ Congratulations, you have solved the level!
 >
 > 还是克隆远程git项目, 只不过换个名字
 
-```
+```shell
 [root@pipeline-cloud-test02 git_hug]# git clone  https://github.com/Gazler/cloneme my_cloned_repo
 Cloning into 'my_cloned_repo'...
 remote: Counting objects: 7, done.
@@ -487,7 +485,7 @@ Congratulations, you have solved the level!
 
 使用储藏命令后, 它会帮你把工作环境回到	最后一次提交的状态, 也就是一个完全干净的工作环境. 
 
-```
+```shell
 git stash list # 查看暂存工作区的列表
 git stash pop # 弹出这个现场
 ```
@@ -566,7 +564,7 @@ Congratulations, you have solved the level!
 >
 > 给当前提交打一个新标签
 
-```
+```shell
 [root@pipeline-cloud-test02 git_hug]# git tag new_tag
 [root@pipeline-cloud-test02 git_hug]# git tag
 new_tag
@@ -592,7 +590,7 @@ git tag -d xxx # 删除某个标签
 >
 > 推送本地仓库的标签到远程仓库
 
-```
+```shell
 [root@pipeline-cloud-test02 git_hug]# git push --tags
 [root@pipeline-cloud-test02 git_hug]# githug
 ********************************************************************************
@@ -609,7 +607,7 @@ Congratulations, you have solved the level!
 >
 > README文件已经被提交, 但是另外一个文件忘记了, 添加这个文件到上一次提交中
 
-```
+```shell
 [root@pipeline-cloud-test02 git_hug]# git status -s
 ?? forgotten_file.rb
 [root@pipeline-cloud-test02 git_hug]# git add forgotten_file.rb
@@ -627,7 +625,7 @@ Congratulations, you have solved the level!
 
 一般是有文件漏提交了才会用```--amend```. 会把你漏的东西加到上一次提交里.
 
-```
+```shell
 git commit --amend
 git commit --amend -m "xxx"  # 并用新的注释覆盖上一次的
 git commit --amend -C HEAD   # 还是用上一次的注释
@@ -641,7 +639,7 @@ git commit --amend -C HEAD   # 还是用上一次的注释
 >
 > 提交时候改变下日期
 
-```
+```shell
 [root@pipeline-cloud-test02 git_hug]# date
 Fri Dec 22 14:07:17 CST 2017
 [root@pipeline-cloud-test02 git_hug]# git commit --date="Fri Dec 22 14:07:17 CST 2018" -m "midify commit date"
@@ -665,7 +663,7 @@ Congratulations, you have solved the level!
 >
 > 有两个文件要被提交, 但是你想分别提交, 把to_commit_second.rb从暂存区中拿出来
 
-```
+```shell
 [root@pipeline-cloud-test02 git_hug]# git reset to_commit_second.rb
 [root@pipeline-cloud-test02 git_hug]# githug
 ********************************************************************************
@@ -690,7 +688,7 @@ Congratulations, you have solved the level!
 >
 > 取消最后一次提交, 并保持暂存区不变
 
-```
+```shell
 [root@pipeline-cloud-test02 git_hug]# git log --oneline
 02dd7f7 Premature commit
 40820f0 Initial commit
@@ -718,7 +716,7 @@ Congratulations, you have solved the level!
 >
 > 一个文件已经被修改了, 但你并不想保留这份修改. 把文件撤销到最后一次提交的状态.
 
-```
+```shell
 [root@pipeline-cloud-test02 git_hug]# git status -s
  M config.rb
 [root@pipeline-cloud-test02 git_hug]# git checkout config.rb
@@ -738,7 +736,7 @@ Congratulations, you have solved the level!
 >
 > 找到这个项目的远程仓库名
 
-```
+```shell
 [root@pipeline-cloud-test02 git_hug]# git remote
 my_remote_repo
 [root@pipeline-cloud-test02 git_hug]# githug
@@ -757,7 +755,7 @@ Congratulations, you have solved the level!
 >
 > 找到这个项目的远程仓库的URL
 
-```
+```shell
 [root@pipeline-cloud-test02 git_hug]# git remote -v
 my_remote_repo  https://github.com/Gazler/githug (fetch)
 my_remote_repo  https://github.com/Gazler/githug (push)
@@ -779,7 +777,7 @@ Congratulations, you have solved the level!
 >
 > 从远程仓库origin拉取更新
 
-```
+```shell
 [root@pipeline-cloud-test02 git_hug]# git pull origin master
 remote: Counting objects: 3, done.
 remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 3
@@ -801,7 +799,7 @@ Congratulations, you have solved the level!
 >
 > 添加一个远程仓库, 仓库名origin, 地址https://github.com/githug/githug
 
-```
+```shell
 [root@pipeline-cloud-test02 git_hug]# git remote
 [root@pipeline-cloud-test02 git_hug]# git remote -v
 [root@pipeline-cloud-test02 git_hug]# git remote add origin https://github.com/githug/githug
@@ -858,7 +856,7 @@ f2580d0 Second commit
 
 关于推送到远程:
 
-```
+```shell
 # 推送到远程
 git push remote-name branch-name
 git push -u remote-name branch-name # 推送的同时记住仓库名和分支
@@ -872,7 +870,10 @@ git push # 记住后这样推送
 所以需要先获取远程的最新代码到本地, 有如下两种方式:
 
 1. ```git pull```: 把远程仓库的最新代码合并到本地，然后再提交。这时本地的提交和远程的提交**按时间顺序混合排列**。
+
 2. ```git rebase```: 把本地仓库的更新排到远程仓库更新之后，那这时候本地仓库的所有提交都排在远程仓库的最后一次提交之后。rebase翻译过来叫变基, 后面还会有关于它的应用.
+
+   ​
 
 
 
@@ -882,7 +883,7 @@ git push # 记住后这样推送
 >
 > 最后一次提交之后你又修改了app.rb文件, 找到哪行被修改了
 
-```
+```shell
 [root@pipeline-cloud-test02 git_hug]# git diff app.rb
 diff --git a/app.rb b/app.rb
 index 4f703ca..3bfa839 100644
@@ -912,7 +913,7 @@ Congratulations, you have solved the level!
 
 被修改后的文件是modified状态: 
 
-```
+```shell
 git diff –staged # 可以查看第一个flag(也就是Staging arae和History 之间的变化), 产生相同的效果
 git diff HEAD # 可以看History 和 Working 之间的变化
 git diff –stat # 后面加stat可以简化变化信息
@@ -926,7 +927,7 @@ git diff –stat # 后面加stat可以简化变化信息
 >
 > 有人在config.rb文件里放了个password, 找出来谁搞的? 
 
-```
+```shell
 [root@pipeline-cloud-test02 git_hug]# git blame config.rb
 ^5e8863d (Gary Rennie       2012-03-08 23:05:24 +0000  1) class Config
 70d00535 (Bruce Banner      2012-03-08 23:07:41 +0000  2)   attr_accessor :name, :password
@@ -962,7 +963,7 @@ Congratulations, you have solved the level!
 >
 > 你想实验一些代码, 但害怕有问题. 创建一个新分支test_code
 
-```
+```shell
 [root@pipeline-cloud-test02 git_hug]# git branch test_code
 [root@pipeline-cloud-test02 git_hug]# git branch
 * master
@@ -974,7 +975,7 @@ Congratulations, you have solved the level!
 Congratulations, you have solved the level!
 ```
 
-```
+```shell
 git branch xxx # 创建一个分支
 git branch # 列出所有分支
 ```
@@ -987,7 +988,7 @@ git branch # 列出所有分支
 >
 >创建一个新分支my_branch并切换到这个新分支
 
-```
+```shell
 [root@pipeline-cloud-test02 git_hug]# git branch my_branch
 [root@pipeline-cloud-test02 git_hug]# git checkout my_branch
 Switched to branch 'my_branch'
@@ -1003,7 +1004,7 @@ Congratulations, you have solved the level!
 
 **补充:**
 
-```
+```shell
 git checkout xxxBranch  # 检出一个分支
 git checkout xxxFile  # 之前讲过如何撤销进入暂存区的修改, 这个也可以
 git checkout -b xxx  # == git branch xxx + git checkout xxx
@@ -1018,7 +1019,7 @@ git checkout - # 用于在最近的两个分支之间切换
 >
 > 你需要切换到```tag v1.2```上去修复一些Bug
 
-```
+```shell
 [root@pipeline-cloud-test02 git_hug]# git branch
 * master
 [root@pipeline-cloud-test02 git_hug]# git tag
@@ -1058,7 +1059,7 @@ Congratulations, you have solved the level!
 >
 > 切换到```tag v1.2```上去修复一个bug(注意有一个分支也叫v1.2)
 
-```
+```shell
 [root@pipeline-cloud-test02 git_hug]# git checkout tags/v1.2
 Note: checking out 'tags/v1.2'.
 
@@ -1089,7 +1090,7 @@ Congratulations, you have solved the level!
 >
 > 你忘记在上次提交之前先创建一个分支, 那么创建一个test_branch在上次提交之前
 
-```
+```shell
 [root@pipeline-cloud-test02 git_hug]# git log --oneline
 03a7f2c Updating file1 again
 3bcda78 Updating file1
@@ -1110,7 +1111,7 @@ Congratulations, you have solved the level!
 >
 > 删掉```delete_me```分支
 
-```
+```shell
 [root@pipeline-cloud-test02 git_hug]# git branch
   delete_me
 * master
@@ -1131,7 +1132,7 @@ Congratulations, you have solved the level!
 >
 > 你本地分支做了些修改想分享它, 但是不准备合并到master上. 所以把他推送到test_branch分支远程仓库上.
 
-```
+```shell
 [root@pipeline-cloud-test02 git_hug]# git remote
 origin
 [root@pipeline-cloud-test02 git_hug]# git branch
@@ -1161,7 +1162,7 @@ Congratulations, you have solved the level!
 >
 > feature分支上有个文件, 把它合并到master上
 
-```
+```shell
 [root@pipeline-cloud-test02 git_hug]# git log master --oneline
 e12277f added file1
 [root@pipeline-cloud-test02 git_hug]# git log feature --oneline
@@ -1196,7 +1197,7 @@ Congratulations, you have solved the level!
 >
 > 有一个新的分支推送到远程仓库了, 得到它但是不要合并到你的本地仓库
 
-```
+```shell
 [root@pipeline-cloud-test02 git_hug]# git branch
 * master
 [root@pipeline-cloud-test02 git_hug]# git branch -r
@@ -1230,6 +1231,637 @@ Congratulations, you have solved the level!
 
 > We are using a git rebase workflow and the feature branch is ready to go into master. Let's rebase the feature branch onto our master branch.
 >
-> 
+> 我们使用了git rebase工作流, 并准备把feature分支合并到master. 现在rebase feature分支到master分之上吧.
 
-41关rebase -onto参考: http://blog.csdn.net/huitailang1991/article/details/54289701
+```shell
+[root@pipeline-cloud-test02 git_hug]# git branch
+  feature
+* master
+[root@pipeline-cloud-test02 git_hug]# git checkout feature
+Switched to branch 'feature'
+[root@pipeline-cloud-test02 git_hug]# git log --oneline
+ed0fdcf add feature
+a78bcab init commit
+[root@pipeline-cloud-test02 git_hug]# git log master --oneline
+98205e9 add content
+a78bcab init commit
+[root@pipeline-cloud-test02 git_hug]# git rebase master
+First, rewinding head to replay your work on top of it...
+Applying: add feature
+[root@pipeline-cloud-test02 git_hug]# git log master --oneline
+98205e9 add content
+a78bcab init commit
+[root@pipeline-cloud-test02 git_hug]# git log --oneline
+967920c add feature
+98205e9 add content
+a78bcab init commit
+[root@pipeline-cloud-test02 git_hug]# githug
+********************************************************************************
+*                                    Githug                                    *
+********************************************************************************
+Congratulations, you have solved the level!
+```
+
+参考: [Git Rebase原理以及黄金准则详解](https://segmentfault.com/a/1190000005937408)
+
+
+
+##### Level 41: rebase_onto
+
+> You have created your branch from `wrong_branch` and already made some commits, and you realise that you needed to create your branch from `master`. Rebase your commits onto `master` branch so that you don't have `wrong_branch` commits.
+>
+> 你错误的从```wrong_branch```上创建了一个分支, 并且有了一些提交, 但是你意识到你应该是从```master```上创建分支, 现在rebase你的提交到```master```分支上去, 并且不保留```wrong_branch```的提交.
+
+```shell
+[root@pipeline-cloud-test02 git_hug]# git branch
+  master
+* readme-update
+  wrong_branch
+[root@pipeline-cloud-test02 git_hug]# git log master --oneline
+3d8ad8d Create authors file
+[root@pipeline-cloud-test02 git_hug]# git log wrong_branch --oneline
+a2c5c42 Wrong changes
+3d8ad8d Create authors file
+[root@pipeline-cloud-test02 git_hug]# git log --oneline
+9c959f1 Add `Install` header in readme
+082624b Add `About` header in readme
+73dbf72 Add app name in readme
+a2c5c42 Wrong changes
+3d8ad8d Create authors file
+[root@pipeline-cloud-test02 git_hug]# git rebase --onto master wrong_branch readme-update
+First, rewinding head to replay your work on top of it...
+Applying: Add app name in readme
+Applying: Add `About` header in readme
+Applying: Add `Install` header in readme
+[root@pipeline-cloud-test02 git_hug]# git log master --oneline
+3d8ad8d Create authors file
+[root@pipeline-cloud-test02 git_hug]# git log wrong_branch --oneline
+a2c5c42 Wrong changes
+3d8ad8d Create authors file
+[root@pipeline-cloud-test02 git_hug]# git log --oneline
+b113760 Add `Install` header in readme
+809fc39 Add `About` header in readme
+7adf9cd Add app name in readme
+3d8ad8d Create authors file
+[root@pipeline-cloud-test02 git_hug]# githug
+********************************************************************************
+*                                    Githug                                    *
+********************************************************************************
+Congratulations, you have solved the level!
+```
+
+```wrong_branch```和```master```分支的日志都没有变, 注意看```readme-update```的日志变化.
+
+**补充:**
+
+摘一段官网的内容:
+
+> First let’s assume your topic is based on branch next. For example, a feature developed in topic depends on some functionality which is found in next.
+
+```
+o---o---o---o---o  master
+     \
+      o---o---o---o---o  next
+                       \
+                        o---o---o  topic
+```
+
+> We want to make topic forked from branch master; for example, because the functionality on which topic depends was merged into the more stable master branch. We want our tree to look like this:
+
+```
+o---o---o---o---o  master
+    |            \
+    |             o'--o'--o'  topic
+     \
+      o---o---o---o---o  next
+```
+
+>  We can get this using the following command:```git rebase –onto master next topic```
+
+
+
+##### Level 42: repack
+
+> Optimise how your repository is packaged ensuring that redundant packs are removed.
+>
+> 优化仓库的打包, 确保删除掉重复多余的包
+
+```shell
+[root@pipeline-cloud-test02 git_hug]# ls .git/objects/
+4d  80  e6  info  pack
+[root@pipeline-cloud-test02 git_hug]# git repack -d
+Counting objects: 3, done.
+Writing objects: 100% (3/3), done.
+Total 3 (delta 0), reused 0 (delta 0)
+[root@pipeline-cloud-test02 git_hug]# ls .git/objects/
+info  pack
+[root@pipeline-cloud-test02 git_hug]# ls .git/objects/pack/
+pack-830ef7487354a6468143f53dd19ee16c25fc2837.idx  pack-830ef7487354a6468143f53dd19ee16c25fc2837.pack
+[root@pipeline-cloud-test02 git_hug]# githug
+********************************************************************************
+*                                    Githug                                    *
+********************************************************************************
+Congratulations, you have solved the level!
+```
+
+
+
+##### Level 43: cherry-pick
+
+> Your new feature isn't worth the time and you're going to delete it. But it has one commit that fills in `README` file, and you want this commit to be on the master as well.
+>
+> 你的新功能废了你要删除它! 但是其中有一次README的提交还是有用的, 你把这次提交合并到主干上.
+
+```shell
+[root@pipeline-cloud-test02 git_hug]# git branch
+* master
+  new-feature
+[root@pipeline-cloud-test02 git_hug]# git log new-feature --oneline
+ea2a47c some small fixes
+4a1961b Fixed feature
+ca32a6d Filled in README.md with proper input
+58a8c8e Added a stub for the feature
+ea3dbcc Initial commit
+[root@pipeline-cloud-test02 git_hug]# git log --oneline
+6edea63 Added fancy branded output
+232d266 Renamed project.js -> herdcore-math.js
+b30c6a9 Added a hardcore math module
+ea3dbcc Initial commit
+[root@pipeline-cloud-test02 git_hug]# git cherry
+cherry        cherry-pick
+[root@pipeline-cloud-test02 git_hug]# git cherry
+cherry        cherry-pick
+[root@pipeline-cloud-test02 git_hug]# git cherry-pick ca32a6d
+[master 25034ea] Filled in README.md with proper input
+ Author: Andrey <aslushnikov@gmail.com>
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+[root@pipeline-cloud-test02 git_hug]# git log --oneline
+25034ea Filled in README.md with proper input
+6edea63 Added fancy branded output
+232d266 Renamed project.js -> herdcore-math.js
+b30c6a9 Added a hardcore math module
+ea3dbcc Initial commit
+[root@pipeline-cloud-test02 git_hug]# githug
+********************************************************************************
+*                                    Githug                                    *
+********************************************************************************
+Congratulations, you have solved the level!
+```
+
+```git cherry-pick hash-code```: 摘樱桃.  可以选取一个分支上某次提交的哈希值来合并到主线上. 
+
+
+
+##### Level 44: grep
+
+> Your project's deadline approaches, you should evaluate how many TODOs are left in your code.
+>
+> 找下项目里还有多少待办事项(TODOs)
+
+```shell
+[root@pipeline-cloud-test02 git_hug]# git grep TODO
+app.rb:# TODO Make site url variable.
+app.rb:# TODO Make API version variable.
+app.rb:# TODO Redirecting queries could be useful.
+config.rb:    # TODO Move password to a configuration file.
+[root@pipeline-cloud-test02 git_hug]# githug
+********************************************************************************
+*                                    Githug                                    *
+********************************************************************************
+How many items are there in your todolist? 4
+Congratulations, you have solved the level!
+
+```
+
+```shell
+git grep xxx # 全项目查找
+git grep xxx file-name # 指定文件查找
+```
+
+
+
+##### Level 45: rename_commit
+
+> Correct the typo in the message of your first (non-root) commit.
+>
+> 修正第一次提交的拼写错误
+
+```shell
+[root@pipeline-cloud-test02 git_hug]# git log --oneline
+5da15a1 Second commit
+d1c06bd First coommit
+2b08caa Initial commit
+[root@pipeline-cloud-test02 git_hug]# git rebase -i 2b08caa
+[detached HEAD ac4092f] First commit
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 file1
+Successfully rebased and updated refs/heads/master.
+[root@pipeline-cloud-test02 git_hug]# git log --oneline
+208de39 Second commit
+ac4092f First commit
+2b08caa Initial commit
+[root@pipeline-cloud-test02 git_hug]# githug
+********************************************************************************
+*                                    Githug                                    *
+********************************************************************************
+Congratulations, you have solved the level!
+```
+
+**补充:**
+
+```git rebase -i hash-code```:
+
+后面加了```-i```参数后就不再是分支合并的意思了.  ```-i```表示交互, 后面跟上提交的哈希码, 可以修改历史的提交.
+
+执行该命令后, 会启动文本编辑器, 并在其中显示每次提交的记录信息(从前到后显示). 
+
+每行记录前面会有一个标识, 表示进行什么修改操作: 
+
+**Commands:** 
+
+* p, pick: 表示执行此次提交
+* r, reword: 表示执行此次提交，但要修改备注内容
+* e, edit:  表示可以修改此次提交，比如再追加文件或修改文件
+* s, squash : 表示把此次提交的内容合并到上次提交中，备注内容也合并到上次提交中
+* f, fixup : 和 "squash" 类似，但会丢弃掉此次备注内容
+* x, exec : 执行命令行下的命令
+* drop : 删除此次提交
+
+本关用的就是reword.
+
+
+
+##### Level 46: squash
+
+> You have committed several times but would like all those changes to be one commit.
+>
+> 把多次提交合并成一次
+
+```shell
+[root@pipeline-cloud-test02 git_hug]# git log --oneline
+a68644a Updating README (squash this commit into Adding README)
+712a031 Updating README (squash this commit into Adding README)
+da9df2a Updating README (squash this commit into Adding README)
+e799cb3 Adding README
+04a03cf Initial Commit
+[root@pipeline-cloud-test02 git_hug]# git rebase -i 04a03cf
+[detached HEAD 63c098c] Adding README
+ 1 file changed, 3 insertions(+)
+ create mode 100644 README
+Successfully rebased and updated refs/heads/master.
+[root@pipeline-cloud-test02 git_hug]# git log --oneline
+63c098c Adding README
+04a03cf Initial Commit
+[root@pipeline-cloud-test02 git_hug]# githug
+********************************************************************************
+*                                    Githug                                    *
+********************************************************************************
+Congratulations, you have solved the level!
+```
+
+本关用的就是squash.
+
+
+
+##### Level 47: merge_squash
+
+> Merge all commits from the long-feature-branch as a single commit.
+>
+> 把```long-feature-branch```上的多次提交合并到主干上的一次提交
+
+```shell
+[root@pipeline-cloud-test02 git_hug]# git branch
+  long-feature-branch
+* master
+[root@pipeline-cloud-test02 git_hug]# git log master --oneline
+b79bd86 Second commit
+24289dd First commit
+[root@pipeline-cloud-test02 git_hug]# git log long-feature-branch  --oneline
+0a1ccc1 Time
+36fb820 Takes
+cef0b75 Developing new features
+24289dd First commit
+[root@pipeline-cloud-test02 git_hug]# git merge long-feature-branch --squash
+Squash commit -- not updating HEAD
+Automatic merge went well; stopped before committing as requested
+[root@pipeline-cloud-test02 git_hug]# git commit -m "merge from long-fxxxx-branch"
+[master 18b8931] merge from long-fxxxx-branch
+ 1 file changed, 3 insertions(+)
+ create mode 100644 file3
+[root@pipeline-cloud-test02 git_hug]# git log master --oneline
+18b8931 merge from long-fxxxx-branch
+b79bd86 Second commit
+24289dd First commit
+[root@pipeline-cloud-test02 git_hug]# githug
+********************************************************************************
+*                                    Githug                                    *
+********************************************************************************
+Congratulations, you have solved the level!
+```
+
+通常分支上会有很多个提交, 在合并到主干上时也会给主干带过去多次提交记录, 这样不便于追踪. 
+
+所以使用```git merge xxbranch_name --squash```命令把分支的多次提交搞成一次. 
+
+注意使用完合并之后, 需要在```commit```一下, 并写上注释信息. (不加```--squash```时会自动commit).
+
+
+
+##### Level 48: reorder
+
+> You have committed several times but in the wrong order. Please reorder your commits.
+>
+> 调整提交顺序
+
+```shell
+[root@pipeline-cloud-test02 git_hug]# git log --oneline
+ef9e60e Second commit
+54c5e74 Third commit
+b424f5a First commit
+b435e3c Initial Setup
+[root@pipeline-cloud-test02 git_hug]# git rebase -i b435e3c
+Successfully rebased and updated refs/heads/master.
+[root@pipeline-cloud-test02 git_hug]# git log --oneline
+94b9586 Third commit
+866d552 Second commit
+b424f5a First commit
+b435e3c Initial Setup
+[root@pipeline-cloud-test02 git_hug]# githug
+********************************************************************************
+*                                    Githug                                    *
+********************************************************************************
+Congratulations, you have solved the level!
+```
+
+
+
+##### Level 49: bisect
+
+> A bug was introduced somewhere along the way. You know that running "ruby prog.rb 5" should output 15. You can also run "make test". What are the first 7 chars of the hash of the commit that introduced the bug.
+>
+> 在开发过程中引入了一个 bug。已知运行 "ruby prog.rb 5" 应该输入 15，你也可以运行 "make test" 进行测试。你需要确定引入 bug 的那次提交的哈希值的前7位。
+
+```shell
+[root@pipeline-cloud-test02 git_hug]# git log --oneline
+12628f4 Another Commit
+9795761 Another Commit
+028763b Another Commit
+888386c Another Commit
+bb736dd Another Commit
+18ed2ac Another Commit
+5db7a7c Another Commit
+7c03a99 Another Commit
+9f54462 Another Commit
+5d1eb75 Another Commit
+fdbfc0d Another Commit
+a530e7e Another Commit
+ccddb96 Another Commit
+2e1735d Another Commit
+ffb097e Another Commit
+e060c0d Another Commit
+49774ea Another Commit
+8c992af Another Commit
+80a9b3d Another Commit
+f608824 First commit
+[root@pipeline-cloud-test02 git_hug]# git bisect start
+[root@pipeline-cloud-test02 git_hug]# git bisect good f608824
+[root@pipeline-cloud-test02 git_hug]# git bisect bad 12628f4
+Bisecting: 9 revisions left to test after this (roughly 3 steps)
+[fdbfc0d403e5ac0b2659cbfa2cbb061fcca0dc2a] Another Commit
+[root@pipeline-cloud-test02 git_hug]# make test
+ruby prog.rb 5 | ruby test.rb
+[root@pipeline-cloud-test02 git_hug]# git bisect good
+Bisecting: 4 revisions left to test after this (roughly 2 steps)
+[18ed2ac1522a014412d4303ce7c8db39becab076] Another Commit
+[root@pipeline-cloud-test02 git_hug]# make test
+ruby prog.rb 5 | ruby test.rb
+make: *** [test] Error 1
+[root@pipeline-cloud-test02 git_hug]# git bisect bad
+Bisecting: 2 revisions left to test after this (roughly 1 step)
+[9f54462abbb991b167532929b34118113aa6c52e] Another Commit
+[root@pipeline-cloud-test02 git_hug]# make test
+ruby prog.rb 5 | ruby test.rb
+[root@pipeline-cloud-test02 git_hug]# git bisect good
+Bisecting: 0 revisions left to test after this (roughly 1 step)
+[5db7a7cb90e745e2c9dbdd84810ccc7d91d92e72] Another Commit
+[root@pipeline-cloud-test02 git_hug]# make test
+ruby prog.rb 5 | ruby test.rb
+[root@pipeline-cloud-test02 git_hug]# git bisect good
+18ed2ac1522a014412d4303ce7c8db39becab076 is the first bad commit
+commit 18ed2ac1522a014412d4303ce7c8db39becab076
+Author: Robert Bittle <guywithnose@gmail.com>
+Date:   Mon Apr 23 06:52:10 2012 -0400
+
+    Another Commit
+
+:100644 100644 917e70054c8f4a4a79a8e805c0e1601b455ad236 7562257b8e6446686ffc43a2386c50c254365020 M      prog.rb
+[root@pipeline-cloud-test02 git_hug]# githug
+********************************************************************************
+*                                    Githug                                    *
+********************************************************************************
+What are the first 7 characters of the hash of the commit that introduced the bug? 18ed2ac1522a014412d4303ce7c8db39becab076
+Congratulations, you have solved the level!
+```
+
+对我没用.. 略
+
+
+
+##### Level 50: stage_lines
+
+> You've made changes within a single file that belong to two different features, but neither of the changes are yet staged. Stage only the changes belonging to the first feature.
+>
+> 一个文件里有两个功能, 现在只想把其中一个功能提交到暂存区.
+
+```shell
+[root@pipeline-cloud-test02 git_hug]# git status -s
+ M feature.rb
+[root@pipeline-cloud-test02 git_hug]# git diff feature.rb
+diff --git a/feature.rb b/feature.rb
+index 1a271e9..4a80dda 100644
+--- a/feature.rb
++++ b/feature.rb
+@@ -1 +1,3 @@
+ this is the class of my feature
++This change belongs to the first feature
++This change belongs to the second feature
+[root@pipeline-cloud-test02 git_hug]# git add feature.rb --edit
+[root@pipeline-cloud-test02 git_hug]# git status -s
+MM feature.rb
+[root@pipeline-cloud-test02 git_hug]# git diff feature.rb
+diff --git a/feature.rb b/feature.rb
+index 3bccd0e..4a80dda 100644
+--- a/feature.rb
++++ b/feature.rb
+@@ -1,2 +1,3 @@
+ this is the class of my feature
+ This change belongs to the first feature
++This change belongs to the second feature
+[root@pipeline-cloud-test02 git_hug]# githug
+********************************************************************************
+*                                    Githug                                    *
+********************************************************************************
+Congratulations, you have solved the level!
+```
+
+```git add file_name --edit```会在添加文件时打开编辑器, 并显示文件diff结果. 可以根据编辑的结果进行add操作.
+
+
+
+##### Level 51: find_old_branch
+
+> You have been working on a branch but got distracted by a major issue and forgot the name of it. Switch back to that branch.
+>
+> 你忘了刚才时在哪个分支上工作了, 找到它. 切换过去
+
+```shell
+[root@pipeline-cloud-test02 git_hug]# git reflog
+894a16d HEAD@{0}: commit: commit another todo
+6876e5b HEAD@{1}: checkout: moving from solve_world_hunger to kill_the_batman
+324336a HEAD@{2}: commit: commit todo
+6876e5b HEAD@{3}: checkout: moving from blowup_sun_for_ransom to solve_world_hunger
+6876e5b HEAD@{4}: checkout: moving from kill_the_batman to blowup_sun_for_ransom
+6876e5b HEAD@{5}: checkout: moving from cure_common_cold to kill_the_batman
+6876e5b HEAD@{6}: commit (initial): initial commit
+[root@pipeline-cloud-test02 git_hug]# git checkout solve_world_hunger
+Switched to branch 'solve_world_hunger'
+[root@pipeline-cloud-test02 git_hug]# githug
+********************************************************************************
+*                                    Githug                                    *
+********************************************************************************
+Congratulations, you have solved the level!
+```
+
+```git reflog```不光记录了Commit信息, 还记录了分支切换的信息.
+
+
+
+##### Level 52: revert
+
+> You have committed several times but want to undo the middle commit. All commits have been pushed, so you can't change existing history.
+>
+> 你提交了很多次, 而且已经推送到服务器上了,所以你不能改变已经存在的历史.  你想取消中间的某次提交.
+
+```shell
+[root@pipeline-cloud-test02 git_hug]# git log --oneline
+498b9be Second commit
+5a42119 Bad commit
+4d925f6 First commit
+[root@pipeline-cloud-test02 git_hug]# git revert 5a42119 --no-edit
+[master c608236] Revert "Bad commit"
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ delete mode 100644 file3
+[root@pipeline-cloud-test02 git_hug]# git log --oneline
+c608236 Revert "Bad commit"
+498b9be Second commit
+5a42119 Bad commit
+4d925f6 First commit
+[root@pipeline-cloud-test02 git_hug]# githug
+********************************************************************************
+*                                    Githug                                    *
+********************************************************************************
+Congratulations, you have solved the level!
+```
+
+既然不能改变历史, 那就用```git revert```增加一次取消的逆处理.
+
+```shell
+git revert hash-code # 调用文本编辑器让你编写注释
+git revert hash-code --no-edit # 自动生成注释
+```
+
+
+
+##### Level 53: restore
+
+> You decided to delete your latest commit by running `git reset --hard HEAD^`. (Not a smart thing to do.) You then change your mind, and want that commit back. Restore the deleted commit.
+>
+> 你用```git reset --hard HEAD^```删掉了最后一次提交(傻), 然后你改变主意了, 想回退恢复那条被删除的提交.
+
+```shell
+[root@pipeline-cloud-test02 git_hug]# git log --oneline
+d56c44f First commit
+9fd667b Initial commit
+[root@pipeline-cloud-test02 git_hug]# git reflog
+d56c44f HEAD@{0}: reset: moving to HEAD^
+dfabe57 HEAD@{1}: commit: Restore this commit
+d56c44f HEAD@{2}: commit: First commit
+9fd667b HEAD@{3}: commit (initial): Initial commit
+[root@pipeline-cloud-test02 git_hug]# git reset --hard dfabe57
+HEAD is now at dfabe57 Restore this commit
+[root@pipeline-cloud-test02 git_hug]# git log --oneline
+dfabe57 Restore this commit
+d56c44f First commit
+9fd667b Initial commit
+[root@pipeline-cloud-test02 git_hug]# githug
+********************************************************************************
+*                                    Githug                                    *
+********************************************************************************
+Congratulations, you have solved the level!
+```
+
+
+
+##### Level 54: conflict
+
+> You need to merge mybranch into the current branch (master). But there may be some incorrect changes in mybranch which may cause conflicts. Solve any merge-conflicts you come across and finish the merge.
+>
+> 你要合并mybranch分支到当前分支master, 可能有冲突, 解决!
+
+```shell
+[root@pipeline-cloud-test02 git_hug]# git merge mybranch
+Auto-merging poem.txt
+CONFLICT (content): Merge conflict in poem.txt
+Automatic merge failed; fix conflicts and then commit the result.
+[root@pipeline-cloud-test02 git_hug]# vim poem.txt
+[root@pipeline-cloud-test02 git_hug]# git status
+# On branch master
+# You have unmerged paths.
+#   (fix conflicts and run "git commit")
+#
+# Unmerged paths:
+#   (use "git add <file>..." to mark resolution)
+#
+#       both modified:      poem.txt
+#
+no changes added to commit (use "git add" and/or "git commit -a")
+[root@pipeline-cloud-test02 git_hug]# git add poem.txt
+[root@pipeline-cloud-test02 git_hug]# git commit -m "merge mybranch to master"
+[master 7c3ba83] merge mybranch to master
+[root@pipeline-cloud-test02 git_hug]# githug
+********************************************************************************
+*                                    Githug                                    *
+********************************************************************************
+Congratulations, you have solved the level!
+```
+
+
+
+##### Level 55: submodule
+
+> You want to include the files from the following repo: `https://github.com/jackmaney/githug-include-me` into a the folder `./githug-include-me`. Do this without cloning the repo or copying the files from the repo into this repo.
+>
+> 你想把 `https://github.com/jackmaney/githug-include-me` 这个仓库的代码引入到自己项目的 `./githug-include-me` 目录，这个方法不需要克隆第三方仓库，也不需要把第三方仓库的文件复制到你的项目中。
+
+```shell
+[root@pipeline-cloud-test02 git_hug]# git submodule add https://github.com/jackmaney/githug-include-me
+Cloning into 'githug-include-me'...
+remote: Counting objects: 9, done.
+remote: Total 9 (delta 0), reused 0 (delta 0), pack-reused 9
+Unpacking objects: 100% (9/9), done.
+[root@pipeline-cloud-test02 git_hug]# githug
+********************************************************************************
+*                                    Githug                                    *
+********************************************************************************
+Congratulations, you have solved the level!
+```
+
+
+
+##### Level 56: contribute
+
+> This is the final level, the goal is to contribute to this repository by making a pull request on GitHub. Please note that this level is designed to encourage you to add a valid contribution to Githug, not testing your ability to create a pull request. Contributions that are likely to be accepted are levels, bug fixes and improved documentation.
+
+最后一关, 是让你去GitHub贡献一个request. 
+
+其实到这已经全部通关! 
